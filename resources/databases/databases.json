@@ -1,0 +1,1835 @@
+{
+  "version": 1,
+  "defaults": {
+    "notion_version": "2022-06-28",
+    "parent_page_id": "24dec38c1243805aaa29de1ea47e6f43"
+  },
+  "databases": {
+    "companies": {
+      "database_id": "24dec38c-1243-811d-b978-c56c3adcedbd",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🏢"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "会社"
+            }
+          }
+        ],
+        "description": [
+          {
+            "type": "text",
+            "text": {
+              "content": "自社/グループ会社の管理"
+            }
+          }
+        ],
+        "properties": {
+          "会社名": {
+            "title": {}
+          },
+          "会社ID": {
+            "rich_text": {}
+          },
+          "会社コード": {
+            "rich_text": {}
+          },
+          "所在地郵便番号": {
+            "rich_text": {}
+          },
+          "所在地住所": {
+            "rich_text": {}
+          },
+          "WebサイトURL": {
+            "url": {}
+          },
+          "代表電話": {
+            "phone_number": {}
+          },
+          "設立日": {
+            "date": {}
+          },
+          "代表者名": {
+            "rich_text": {}
+          },
+          "備考": {
+            "rich_text": {}
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "departments": {
+      "database_id": "24dec38c-1243-816b-ac43-deed818ef6a9",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🏬"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "部署"
+            }
+          }
+        ],
+        "properties": {
+          "部署名": {
+            "title": {}
+          },
+          "部署ID": {
+            "rich_text": {}
+          },
+          "部署コード": {
+            "rich_text": {}
+          },
+          "所属会社": {
+            "relation": {
+              "database_id": "24dec38c-1243-811d-b978-c56c3adcedbd",
+              "single_property": {}
+            }
+          },
+          "親部署": {
+            "relation": {
+              "database_id": "24dec38c-1243-816b-ac43-deed818ef6a9",
+              "single_property": {}
+            }
+          },
+          "部署メール": {
+            "email": {}
+          },
+          "部署電話": {
+            "phone_number": {}
+          },
+          "部署長": {
+            "people": {}
+          },
+          "ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "新規"
+                },
+                {
+                  "name": "進行中"
+                },
+                {
+                  "name": "保留"
+                },
+                {
+                  "name": "完了"
+                },
+                {
+                  "name": "却下"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "accounts": {
+      "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "👤"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "顧客管理"
+            }
+          }
+        ],
+        "properties": {
+          "顧客名": {
+            "title": {}
+          },
+          "顧客ID": {
+            "rich_text": {}
+          },
+          "共通管理ID": {
+            "rich_text": {}
+          },
+          "顧客コード": {
+            "rich_text": {}
+          },
+          "顧客種別": {
+            "select": {
+              "options": [
+                {
+                  "name": "法人"
+                },
+                {
+                  "name": "個人"
+                },
+                {
+                  "name": "官公庁"
+                },
+                {
+                  "name": "学校"
+                },
+                {
+                  "name": "その他"
+                }
+              ]
+            }
+          },
+          "取引ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "見込み"
+                },
+                {
+                  "name": "取引中"
+                },
+                {
+                  "name": "休眠"
+                },
+                {
+                  "name": "取引停止"
+                }
+              ]
+            }
+          },
+          "所属部署": {
+            "relation": {
+              "database_id": "24dec38c-1243-816b-ac43-deed818ef6a9",
+              "single_property": {}
+            }
+          },
+          "営業担当者": {
+            "people": {}
+          },
+          "代表責任者": {
+            "relation": {
+              "database_id": "24dec38c-1243-81a6-a39e-fb86cb4ebd47",
+              "single_property": {}
+            }
+          },
+          "関係開始日": {
+            "date": {}
+          },
+          "WebサイトURL": {
+            "url": {}
+          },
+          "郵便番号": {
+            "rich_text": {}
+          },
+          "住所": {
+            "rich_text": {}
+          },
+          "代表電話": {
+            "phone_number": {}
+          },
+          "法人番号13桁": {
+            "rich_text": {}
+          },
+          "業種": {
+            "multi_select": {
+              "options": []
+            }
+          },
+          "従業員数": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "支払条件": {
+            "select": {
+              "options": [
+                {
+                  "name": "即時"
+                },
+                {
+                  "name": "末締翌月末"
+                },
+                {
+                  "name": "月末翌々月"
+                },
+                {
+                  "name": "30日"
+                },
+                {
+                  "name": "60日"
+                }
+              ]
+            }
+          },
+          "有効契約数": {
+            "rollup": {
+              "function": "count",
+              "relation_property_name": "契約一覧",
+              "rollup_property_name": "契約ID"
+            }
+          },
+          "総契約金額(JPY)": {
+            "rollup": {
+              "function": "sum",
+              "relation_property_name": "契約一覧",
+              "rollup_property_name": "契約金額"
+            }
+          },
+          "最終会議日": {
+            "rollup": {
+              "function": "date_range",
+              "relation_property_name": "会議一覧",
+              "rollup_property_name": "開催日"
+            }
+          },
+          "契約一覧": {
+            "relation": {
+              "database_id": "24dec38c-1243-81a7-b17b-f7ef445168e1",
+              "single_property": {}
+            }
+          },
+          "会議一覧": {
+            "relation": {
+              "database_id": "24dec38c-1243-8173-91d0-d5fa05fe7cfd",
+              "single_property": {}
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "contacts": {
+      "database_id": "24dec38c-1243-81a6-a39e-fb86cb4ebd47",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🧑‍💼"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "取引先責任者"
+            }
+          }
+        ],
+        "properties": {
+          "氏名": {
+            "title": {}
+          },
+          "責任者ID": {
+            "rich_text": {}
+          },
+          "メール": {
+            "email": {}
+          },
+          "電話": {
+            "phone_number": {}
+          },
+          "所属顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "役職": {
+            "rich_text": {}
+          },
+          "部署名(先方)": {
+            "rich_text": {}
+          },
+          "ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "新規"
+                },
+                {
+                  "name": "進行中"
+                },
+                {
+                  "name": "保留"
+                },
+                {
+                  "name": "完了"
+                },
+                {
+                  "name": "却下"
+                }
+              ]
+            }
+          },
+          "備考": {
+            "rich_text": {}
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "leads": {
+      "database_id": "24dec38c-1243-811f-9e08-f2bd64d5876b",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🪪"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "案件（引合）"
+            }
+          }
+        ],
+        "properties": {
+          "案件名": {
+            "title": {}
+          },
+          "案件ID": {
+            "rich_text": {}
+          },
+          "顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "取引先責任者": {
+            "relation": {
+              "database_id": "24dec38c-1243-81a6-a39e-fb86cb4ebd47",
+              "single_property": {}
+            }
+          },
+          "発生日": {
+            "date": {}
+          },
+          "見込みランク": {
+            "select": {
+              "options": [
+                {
+                  "name": "A"
+                },
+                {
+                  "name": "B"
+                },
+                {
+                  "name": "C"
+                }
+              ]
+            }
+          },
+          "予算見込み": {
+            "number": {
+              "format": "yen"
+            }
+          },
+          "受注確度": {
+            "number": {
+              "format": "percent"
+            }
+          },
+          "案件種別": {
+            "select": {
+              "options": [
+                {
+                  "name": "新規"
+                },
+                {
+                  "name": "既存"
+                },
+                {
+                  "name": "紹介"
+                }
+              ]
+            }
+          },
+          "担当部署": {
+            "relation": {
+              "database_id": "24dec38c-1243-816b-ac43-deed818ef6a9",
+              "single_property": {}
+            }
+          },
+          "担当者": {
+            "people": {}
+          },
+          "ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "新規"
+                },
+                {
+                  "name": "進行中"
+                },
+                {
+                  "name": "保留"
+                },
+                {
+                  "name": "完了"
+                },
+                {
+                  "name": "却下"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "opportunities": {
+      "database_id": "24dec38c-1243-81e7-988c-c9234807c29b",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "💼"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "商談"
+            }
+          }
+        ],
+        "properties": {
+          "商談名": {
+            "title": {}
+          },
+          "商談ID": {
+            "rich_text": {}
+          },
+          "関連案件": {
+            "relation": {
+              "database_id": "24dec38c-1243-811f-9e08-f2bd64d5876b",
+              "single_property": {}
+            }
+          },
+          "顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "ステージ": {
+            "select": {
+              "options": [
+                {
+                  "name": "見込み"
+                },
+                {
+                  "name": "提案"
+                },
+                {
+                  "name": "交渉"
+                },
+                {
+                  "name": "受注"
+                },
+                {
+                  "name": "失注"
+                }
+              ]
+            }
+          },
+          "金額": {
+            "number": {
+              "format": "yen"
+            }
+          },
+          "受注確度": {
+            "number": {
+              "format": "percent"
+            }
+          },
+          "予定受注日": {
+            "date": {}
+          },
+          "実受注日": {
+            "date": {}
+          },
+          "失注理由": {
+            "rich_text": {}
+          },
+          "担当者": {
+            "people": {}
+          },
+          "タグ": {
+            "multi_select": {
+              "options": []
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "quotes": {
+      "database_id": "24dec38c-1243-816e-bb78-eff998a60090",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🧾"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "見積"
+            }
+          }
+        ],
+        "properties": {
+          "見積名": {
+            "title": {}
+          },
+          "見積ID": {
+            "rich_text": {}
+          },
+          "顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "商談": {
+            "relation": {
+              "database_id": "24dec38c-1243-81e7-988c-c9234807c29b",
+              "single_property": {}
+            }
+          },
+          "見積金額": {
+            "number": {
+              "format": "yen"
+            }
+          },
+          "有効期限": {
+            "date": {}
+          },
+          "見積ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "作成"
+                },
+                {
+                  "name": "承認待ち"
+                },
+                {
+                  "name": "承認"
+                },
+                {
+                  "name": "却下"
+                },
+                {
+                  "name": "失効"
+                }
+              ]
+            }
+          },
+          "作成日": {
+            "date": {}
+          },
+          "承認日": {
+            "date": {}
+          },
+          "PDF": {
+            "files": {}
+          },
+          "備考": {
+            "rich_text": {}
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "contracts": {
+      "database_id": "24dec38c-1243-81a7-b17b-f7ef445168e1",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "📄"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "契約"
+            }
+          }
+        ],
+        "properties": {
+          "契約名": {
+            "title": {}
+          },
+          "契約ID": {
+            "rich_text": {}
+          },
+          "顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "商談": {
+            "relation": {
+              "database_id": "24dec38c-1243-81e7-988c-c9234807c29b",
+              "single_property": {}
+            }
+          },
+          "見積": {
+            "relation": {
+              "database_id": "24dec38c-1243-816e-bb78-eff998a60090",
+              "single_property": {}
+            }
+          },
+          "契約金額": {
+            "number": {
+              "format": "yen"
+            }
+          },
+          "契約開始日": {
+            "date": {}
+          },
+          "契約終了日": {
+            "date": {}
+          },
+          "契約期間(月)": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "支払条件": {
+            "select": {
+              "options": [
+                {
+                  "name": "即時"
+                },
+                {
+                  "name": "末締翌月末"
+                },
+                {
+                  "name": "月末翌々月"
+                },
+                {
+                  "name": "30日"
+                },
+                {
+                  "name": "60日"
+                }
+              ]
+            }
+          },
+          "契約ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "起案"
+                },
+                {
+                  "name": "承認"
+                },
+                {
+                  "name": "有効"
+                },
+                {
+                  "name": "失効"
+                },
+                {
+                  "name": "終了"
+                }
+              ]
+            }
+          },
+          "契約書": {
+            "files": {}
+          },
+          "自動更新": {
+            "checkbox": {}
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "projects": {
+      "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🛠️"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "プロジェクト"
+            }
+          }
+        ],
+        "properties": {
+          "プロジェクト名": {
+            "title": {}
+          },
+          "プロジェクトID": {
+            "rich_text": {}
+          },
+          "プロジェクトコード": {
+            "rich_text": {}
+          },
+          "契約": {
+            "relation": {
+              "database_id": "24dec38c-1243-81a7-b17b-f7ef445168e1",
+              "single_property": {}
+            }
+          },
+          "顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "所属部署": {
+            "relation": {
+              "database_id": "24dec38c-1243-816b-ac43-deed818ef6a9",
+              "single_property": {}
+            }
+          },
+          "PM": {
+            "people": {}
+          },
+          "プロジェクトステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "準備"
+                },
+                {
+                  "name": "進行中"
+                },
+                {
+                  "name": "停止"
+                },
+                {
+                  "name": "完了"
+                }
+              ]
+            }
+          },
+          "プロジェクト開始日": {
+            "date": {}
+          },
+          "プロジェクト終了予定日": {
+            "date": {}
+          },
+          "プロジェクト実終了日": {
+            "date": {}
+          },
+          "予算金額(JPY)": {
+            "number": {
+              "format": "yen"
+            }
+          },
+          "予定工数(h)": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "実績工数(h)": {
+            "rollup": {
+              "function": "sum",
+              "relation_property_name": "稼働一覧",
+              "rollup_property_name": "作業時間(h)"
+            }
+          },
+          "進捗率(%)": {
+            "formula": {
+              "expression": "min(100, round(if(or(empty(prop(\"予定工数(h)\")), prop(\"予定工数(h)\") == 0), 0, toNumber(prop(\"実績工数(h)\")) / prop(\"予定工数(h)\") * 100) * 10) / 10)"
+            }
+          },
+          "期日遅延日数": {
+            "formula": {
+              "expression": "if(empty(prop(\"プロジェクト終了予定日\")), 0, dateBetween(now(), prop(\"プロジェクト終了予定日\"), \"days\"))"
+            }
+          },
+          "スコープ": {
+            "rich_text": {}
+          },
+          "目的": {
+            "rich_text": {}
+          },
+          "リポジトリURL": {
+            "url": {}
+          },
+          "ドキュメントURL": {
+            "url": {}
+          },
+          "タグ": {
+            "multi_select": {
+              "options": []
+            }
+          },
+          "機密フラグ": {
+            "checkbox": {}
+          },
+          "稼働一覧": {
+            "relation": {
+              "database_id": "24dec38c-1243-812a-aa9b-f8ddab166f7c",
+              "single_property": {}
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "assignments": {
+      "database_id": "24dec38c-1243-8118-8de2-e28eda6cf989",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "👥"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "要員"
+            }
+          }
+        ],
+        "properties": {
+          "課題名": {
+            "title": {}
+          },
+          "要員割当ID": {
+            "rich_text": {}
+          },
+          "プロジェクト": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+              "single_property": {}
+            }
+          },
+          "担当者": {
+            "people": {}
+          },
+          "役割": {
+            "select": {
+              "options": [
+                {
+                  "name": "PM"
+                },
+                {
+                  "name": "PL"
+                },
+                {
+                  "name": "SE"
+                },
+                {
+                  "name": "QA"
+                },
+                {
+                  "name": "Infra"
+                },
+                {
+                  "name": "Designer"
+                },
+                {
+                  "name": "BA"
+                },
+                {
+                  "name": "Support"
+                }
+              ]
+            }
+          },
+          "稼働率%": {
+            "number": {
+              "format": "percent"
+            }
+          },
+          "アサイン開始日": {
+            "date": {}
+          },
+          "アサイン終了日": {
+            "date": {}
+          },
+          "請求区分": {
+            "select": {
+              "options": [
+                {
+                  "name": "時間"
+                },
+                {
+                  "name": "日"
+                },
+                {
+                  "name": "月"
+                },
+                {
+                  "name": "固定"
+                }
+              ]
+            }
+          },
+          "単価JPY": {
+            "number": {
+              "format": "yen"
+            }
+          },
+          "請求対象": {
+            "checkbox": {}
+          },
+          "外部委託フラグ": {
+            "checkbox": {}
+          },
+          "稼働上限(h/週)": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "アクティブ": {
+            "formula": {
+              "expression": "and(now() >= prop(\"アサイン開始日\"), or(empty(prop(\"アサイン終了日\")), now() <= prop(\"アサイン終了日\")))"
+            }
+          },
+          "稼働実績(h)": {
+            "rollup": {
+              "function": "sum",
+              "relation_property_name": "稼働明細",
+              "rollup_property_name": "作業時間(h)"
+            }
+          },
+          "請求見込額JPY": {
+            "formula": {
+              "expression": "round(if(prop(\"請求対象\"), toNumber(prop(\"稼働実績(h)\")) * prop(\"単価JPY\"), 0))"
+            }
+          },
+          "契約": {
+            "relation": {
+              "database_id": "24dec38c-1243-81a7-b17b-f7ef445168e1",
+              "single_property": {}
+            }
+          },
+          "メモ": {
+            "rich_text": {}
+          },
+          "タグ": {
+            "multi_select": {
+              "options": []
+            }
+          },
+          "稼働明細": {
+            "relation": {
+              "database_id": "24dec38c-1243-812a-aa9b-f8ddab166f7c",
+              "single_property": {}
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "worklogs": {
+      "database_id": "24dec38c-1243-812a-aa9b-f8ddab166f7c",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "⏱️"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "稼働管理"
+            }
+          }
+        ],
+        "properties": {
+          "作業名": {
+            "title": {}
+          },
+          "稼働ID": {
+            "rich_text": {}
+          },
+          "プロジェクト": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+              "single_property": {}
+            }
+          },
+          "要員割当": {
+            "relation": {
+              "database_id": "24dec38c-1243-8118-8de2-e28eda6cf989",
+              "single_property": {}
+            }
+          },
+          "担当者": {
+            "people": {}
+          },
+          "作業日": {
+            "date": {}
+          },
+          "作業時間(h)": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "作業種別": {
+            "select": {
+              "options": [
+                {
+                  "name": "開発"
+                },
+                {
+                  "name": "設計"
+                },
+                {
+                  "name": "調査"
+                },
+                {
+                  "name": "バグ修正"
+                },
+                {
+                  "name": "レビュー"
+                },
+                {
+                  "name": "会議"
+                },
+                {
+                  "name": "テスト"
+                },
+                {
+                  "name": "ドキュメント"
+                }
+              ]
+            }
+          },
+          "課題": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b6-8948-ca3fe60d58bb",
+              "single_property": {}
+            }
+          },
+          "請求対象": {
+            "checkbox": {}
+          },
+          "単価JPY(手入力)": {
+            "number": {
+              "format": "yen"
+            }
+          },
+          "割当単価JPY": {
+            "rollup": {
+              "function": "max",
+              "relation_property_name": "要員割当",
+              "rollup_property_name": "単価JPY"
+            }
+          },
+          "請求金額JPY": {
+            "formula": {
+              "expression": "if(prop(\"請求対象\"), round(prop(\"作業時間(h)\") * if(empty(prop(\"単価JPY(手入力)\")), if(empty(prop(\"割当単価JPY\")), 0, prop(\"割当単価JPY\")), prop(\"単価JPY(手入力)\"))), 0)"
+            }
+          },
+          "承認ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "申請"
+                },
+                {
+                  "name": "承認"
+                },
+                {
+                  "name": "差戻"
+                }
+              ]
+            }
+          },
+          "承認者": {
+            "people": {}
+          },
+          "承認日時": {
+            "date": {}
+          },
+          "年": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "週番号": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "説明": {
+            "rich_text": {}
+          },
+          "添付": {
+            "files": {}
+          },
+          "タグ": {
+            "multi_select": {
+              "options": []
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "issues": {
+      "database_id": "24dec38c-1243-81b6-8948-ca3fe60d58bb",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🐞"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "課題"
+            }
+          }
+        ],
+        "properties": {
+          "課題名": {
+            "title": {}
+          },
+          "課題ID": {
+            "rich_text": {}
+          },
+          "プロジェクト": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+              "single_property": {}
+            }
+          },
+          "種別": {
+            "select": {
+              "options": [
+                {
+                  "name": "バグ"
+                },
+                {
+                  "name": "タスク"
+                },
+                {
+                  "name": "ストーリー"
+                },
+                {
+                  "name": "改善"
+                },
+                {
+                  "name": "研究"
+                }
+              ]
+            }
+          },
+          "ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "未着手"
+                },
+                {
+                  "name": "対応中"
+                },
+                {
+                  "name": "レビュー"
+                },
+                {
+                  "name": "完了"
+                }
+              ]
+            }
+          },
+          "優先度": {
+            "select": {
+              "options": [
+                {
+                  "name": "低"
+                },
+                {
+                  "name": "中"
+                },
+                {
+                  "name": "高"
+                },
+                {
+                  "name": "緊急"
+                }
+              ]
+            }
+          },
+          "親課題": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b6-8948-ca3fe60d58bb",
+              "single_property": {}
+            }
+          },
+          "サブタスク数": {
+            "rollup": {
+              "function": "count",
+              "relation_property_name": "子課題",
+              "rollup_property_name": "課題ID"
+            }
+          },
+          "起票日": {
+            "date": {}
+          },
+          "期日": {
+            "date": {}
+          },
+          "解決日": {
+            "date": {}
+          },
+          "担当者": {
+            "people": {}
+          },
+          "起票者": {
+            "people": {}
+          },
+          "予定工数(h)": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "実績工数(h)": {
+            "rollup": {
+              "function": "sum",
+              "relation_property_name": "稼働一覧",
+              "rollup_property_name": "作業時間(h)"
+            }
+          },
+          "進捗率(%)": {
+            "formula": {
+              "expression": "min(100, round(if(or(empty(prop(\"予定工数(h)\")), prop(\"予定工数(h)\") == 0), 0, toNumber(prop(\"実績工数(h)\")) / prop(\"予定工数(h)\") * 100) * 10) / 10)"
+            }
+          },
+          "期限遅延日数": {
+            "formula": {
+              "expression": "if(empty(prop(\"期日\")), 0, dateBetween(now(), prop(\"期日\"), \"days\"))"
+            }
+          },
+          "説明": {
+            "rich_text": {}
+          },
+          "添付": {
+            "files": {}
+          },
+          "タグ": {
+            "multi_select": {
+              "options": []
+            }
+          },
+          "子課題": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b6-8948-ca3fe60d58bb",
+              "single_property": {}
+            }
+          },
+          "稼働一覧": {
+            "relation": {
+              "database_id": "24dec38c-1243-812a-aa9b-f8ddab166f7c",
+              "single_property": {}
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "meetings": {
+      "database_id": "24dec38c-1243-8173-91d0-d5fa05fe7cfd",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "📅"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "議事録"
+            }
+          }
+        ],
+        "properties": {
+          "会議名": {
+            "title": {}
+          },
+          "会議ID": {
+            "rich_text": {}
+          },
+          "プロジェクト": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+              "single_property": {}
+            }
+          },
+          "顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "会議種別": {
+            "select": {
+              "options": [
+                {
+                  "name": "定例"
+                },
+                {
+                  "name": "臨時"
+                },
+                {
+                  "name": "キックオフ"
+                },
+                {
+                  "name": "レトロ"
+                }
+              ]
+            }
+          },
+          "開催日": {
+            "date": {}
+          },
+          "参加者": {
+            "people": {}
+          },
+          "所要時間(h)": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "議事録": {
+            "rich_text": {}
+          },
+          "資料": {
+            "relation": {
+              "database_id": "24dec38c-1243-81bd-859d-c589e97d13e2",
+              "single_property": {}
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "assets": {
+      "database_id": "24dec38c-1243-81bd-859d-c589e97d13e2",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "📦"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "資料"
+            }
+          }
+        ],
+        "properties": {
+          "資料名": {
+            "title": {}
+          },
+          "資料ID": {
+            "rich_text": {}
+          },
+          "種別": {
+            "select": {
+              "options": [
+                {
+                  "name": "仕様書"
+                },
+                {
+                  "name": "設計"
+                },
+                {
+                  "name": "試験"
+                },
+                {
+                  "name": "報告"
+                },
+                {
+                  "name": "その他"
+                }
+              ]
+            }
+          },
+          "プロジェクト": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+              "single_property": {}
+            }
+          },
+          "顧客": {
+            "relation": {
+              "database_id": "24dec38c-1243-8167-b721-e957e2f9dc22",
+              "single_property": {}
+            }
+          },
+          "バージョン": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "ファイル": {
+            "files": {}
+          },
+          "作成日": {
+            "date": {}
+          },
+          "更新日": {
+            "date": {}
+          },
+          "作成者": {
+            "people": {}
+          },
+          "タグ": {
+            "multi_select": {
+              "options": []
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "knowledge": {
+      "database_id": "24dec38c-1243-81ce-b347-f643ac06d4d0",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "🧠"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "ナレッジ"
+            }
+          }
+        ],
+        "properties": {
+          "タイトル": {
+            "title": {}
+          },
+          "ナレッジID": {
+            "rich_text": {}
+          },
+          "カテゴリ": {
+            "multi_select": {
+              "options": [
+                {
+                  "name": "HowTo"
+                },
+                {
+                  "name": "設計"
+                },
+                {
+                  "name": "障害"
+                },
+                {
+                  "name": "運用"
+                },
+                {
+                  "name": "その他"
+                }
+              ]
+            }
+          },
+          "本文": {
+            "rich_text": {}
+          },
+          "プロジェクト": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+              "single_property": {}
+            }
+          },
+          "関連課題": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b6-8948-ca3fe60d58bb",
+              "single_property": {}
+            }
+          },
+          "参照URL": {
+            "url": {}
+          },
+          "添付": {
+            "files": {}
+          },
+          "作成者": {
+            "people": {}
+          },
+          "共同編集者": {
+            "people": {}
+          },
+          "レビュー担当": {
+            "people": {}
+          },
+          "ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "下書き"
+                },
+                {
+                  "name": "レビュー中"
+                },
+                {
+                  "name": "公開"
+                },
+                {
+                  "name": "アーカイブ"
+                }
+              ]
+            }
+          },
+          "可視性": {
+            "select": {
+              "options": [
+                {
+                  "name": "社内"
+                },
+                {
+                  "name": "社外"
+                },
+                {
+                  "name": "限定"
+                }
+              ]
+            }
+          },
+          "作成日": {
+            "date": {}
+          },
+          "更新日": {
+            "date": {}
+          },
+          "閲覧数": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "読了目安(分)": {
+            "formula": {
+              "expression": "max(1, round(length(format(prop(\"本文\"))) / 500))"
+            }
+          },
+          "関連ナレッジ": {
+            "relation": {
+              "database_id": "24dec38c-1243-81ce-b347-f643ac06d4d0",
+              "single_property": {}
+            }
+          },
+          "関連件数": {
+            "rollup": {
+              "function": "count",
+              "relation_property_name": "関連ナレッジ",
+              "rollup_property_name": "ナレッジID"
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    },
+    "announcements": {
+      "database_id": "24dec38c-1243-81d5-a8ed-d8d2aa066ab6",
+      "payload": {
+        "parent": {
+          "type": "page_id",
+          "page_id": "24dec38c1243805aaa29de1ea47e6f43"
+        },
+        "icon": {
+          "type": "emoji",
+          "emoji": "📣"
+        },
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "お知らせ"
+            }
+          }
+        ],
+        "description": [
+          {
+            "type": "text",
+            "text": {
+              "content": "社内/社外向けのお知らせ（告知・更新情報）を管理するデータベース"
+            }
+          }
+        ],
+        "properties": {
+          "タイトル": {
+            "title": {}
+          },
+          "本文": {
+            "rich_text": {}
+          },
+          "公開ステータス": {
+            "select": {
+              "options": [
+                {
+                  "name": "下書き"
+                },
+                {
+                  "name": "レビュー中"
+                },
+                {
+                  "name": "公開"
+                },
+                {
+                  "name": "アーカイブ"
+                }
+              ]
+            }
+          },
+          "公開日": {
+            "date": {}
+          },
+          "公開終了日": {
+            "date": {}
+          },
+          "可視性": {
+            "select": {
+              "options": [
+                {
+                  "name": "社内"
+                },
+                {
+                  "name": "社外"
+                },
+                {
+                  "name": "限定"
+                }
+              ]
+            }
+          },
+          "重要度": {
+            "select": {
+              "options": [
+                {
+                  "name": "低"
+                },
+                {
+                  "name": "中"
+                },
+                {
+                  "name": "高"
+                },
+                {
+                  "name": "緊急"
+                }
+              ]
+            }
+          },
+          "ピン留め": {
+            "checkbox": {}
+          },
+          "添付": {
+            "files": {}
+          },
+          "参照URL": {
+            "url": {}
+          },
+          "対象部署": {
+            "relation": {
+              "database_id": "24dec38c-1243-816b-ac43-deed818ef6a9",
+              "single_property": {}
+            }
+          },
+          "関連プロジェクト": {
+            "relation": {
+              "database_id": "24dec38c-1243-81b8-9a90-fd36db34cc2a",
+              "single_property": {}
+            }
+          },
+          "作成者": {
+            "people": {}
+          },
+          "共同編集者": {
+            "people": {}
+          },
+          "レビュー担当": {
+            "people": {}
+          },
+          "閲覧数": {
+            "number": {
+              "format": "number"
+            }
+          },
+          "読了目安(分)": {
+            "formula": {
+              "expression": "max(1, round(length(format(prop(\"本文\"))) / 500))"
+            }
+          }
+        }
+      },
+      "rename_map": {}
+    }
+  }
+}

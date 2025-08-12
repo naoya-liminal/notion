@@ -2,13 +2,13 @@
   "version": 1,
   "defaults": {
     "notion_version": "2022-06-28",
-    "parent_page_id": "24b9bf40ae1e80e599a0dd7fef037677"
+    "parent_page_id": "24dec38c1243805aaa29de1ea47e6f43"
   },
   "databases": {
   "companies": {
     "database_id": "24b9bf40-ae1e-8197-8f8b-eb3a346bf93c",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🏢" },
       "title": [{ "type": "text", "text": { "content": "会社" } }],
       "description": [{ "type": "text", "text": { "content": "自社/グループ会社の管理" } }],
@@ -30,7 +30,7 @@
   "departments": {
     "database_id": "24b9bf40-ae1e-814a-8a71-cb6bb1087331",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🏬" },
       "title": [{ "type": "text", "text": { "content": "部署" } }],
       "properties": {
@@ -50,12 +50,13 @@
   "accounts": {
     "database_id": "24b9bf40-ae1e-81fa-9507-d47596fbf1cd",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "👤" },
-      "title": [{ "type": "text", "text": { "content": "顧客(取引先)" } }],
+      "title": [{ "type": "text", "text": { "content": "顧客管理" } }],
       "properties": {
         "顧客名": { "title": {} },
         "顧客ID": { "rich_text": {} },
+        "共通管理ID": { "rich_text": {} },
         "顧客コード": { "rich_text": {} },
         "顧客種別": { "select": { "options": [ { "name": "法人" }, { "name": "個人" }, { "name": "官公庁" }, { "name": "学校" }, { "name": "その他" } ] } },
         "取引ステータス": { "select": { "options": [ { "name": "見込み" }, { "name": "取引中" }, { "name": "休眠" }, { "name": "取引停止" } ] } },
@@ -83,7 +84,7 @@
   "contacts": {
     "database_id": "24b9bf40-ae1e-81f3-8f87-eb5fb1fa1ec2",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🧑‍💼" },
       "title": [{ "type": "text", "text": { "content": "取引先責任者" } }],
       "properties": {
@@ -103,7 +104,7 @@
   "leads": {
     "database_id": "24b9bf40-ae1e-811c-a45e-d9af34770040",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🪪" },
       "title": [{ "type": "text", "text": { "content": "案件（引合）" } }],
       "properties": {
@@ -126,7 +127,7 @@
   "opportunities": {
     "database_id": "24b9bf40-ae1e-816f-b8fc-e8d563586ee9",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "💼" },
       "title": [{ "type": "text", "text": { "content": "商談" } }],
       "properties": {
@@ -149,7 +150,7 @@
   "quotes": {
     "database_id": "24b9bf40-ae1e-816c-87f4-e3db41b2ca6a",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🧾" },
       "title": [{ "type": "text", "text": { "content": "見積" } }],
       "properties": {
@@ -171,7 +172,7 @@
   "contracts": {
     "database_id": "24b9bf40-ae1e-8117-9924-dec3940a1f70",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "📄" },
       "title": [{ "type": "text", "text": { "content": "契約" } }],
       "properties": {
@@ -195,7 +196,7 @@
   "projects": {
     "database_id": "24b9bf40-ae1e-8160-b9ea-ebba6dbbecda",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🛠️" },
       "title": [{ "type": "text", "text": { "content": "プロジェクト" } }],
       "properties": {
@@ -229,9 +230,9 @@
   "assignments": {
     "database_id": "24b9bf40-ae1e-8117-97d5-ef1246cb3009",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "👥" },
-      "title": [{ "type": "text", "text": { "content": "プロジェクト要員" } }],
+      "title": [{ "type": "text", "text": { "content": "要員" } }],
       "properties": {
         "課題名": { "title": {} },
         "要員割当ID": { "rich_text": {} },
@@ -260,7 +261,7 @@
   "worklogs": {
     "database_id": "24b9bf40-ae1e-81bf-a46e-c4e3c60db786",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "⏱️" },
       "title": [{ "type": "text", "text": { "content": "稼働管理" } }],
       "properties": {
@@ -292,9 +293,9 @@
   "issues": {
     "database_id": "24b9bf40-ae1e-81bd-ae3d-fb794ce23355",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🐞" },
-      "title": [{ "type": "text", "text": { "content": "課題管理" } }],
+      "title": [{ "type": "text", "text": { "content": "課題" } }],
       "properties": {
         "課題名": { "title": {} },
         "課題ID": { "rich_text": {} },
@@ -325,9 +326,9 @@
   "meetings": {
     "database_id": "24b9bf40-ae1e-81e1-8d6b-eb9cf2abd35c",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "📅" },
-      "title": [{ "type": "text", "text": { "content": "会議" } }],
+      "title": [{ "type": "text", "text": { "content": "議事録" } }],
       "properties": {
         "会議名": { "title": {} },
         "会議ID": { "rich_text": {} },
@@ -346,7 +347,7 @@
   "assets": {
     "database_id": "24b9bf40-ae1e-815d-8059-fe5664a42ce5",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "📦" },
       "title": [{ "type": "text", "text": { "content": "資料" } }],
       "properties": {
@@ -368,7 +369,7 @@
   "knowledge": {
     "database_id": "24b9bf40-ae1e-81ad-879c-dda6885231c7",
     "payload": {
-      "parent": { "type": "page_id", "page_id": "24b9bf40ae1e80e599a0dd7fef037677" },
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
       "icon": { "type": "emoji", "emoji": "🧠" },
       "title": [{ "type": "text", "text": { "content": "ナレッジ" } }],
       "properties": {
@@ -391,6 +392,65 @@
         "読了目安(分)": { "formula": { "expression": "max(1, round(length(format(prop(\"本文\"))) / 500))" } },
         "関連ナレッジ": { "relation": { "database_id": "$ref:knowledge", "single_property": {} } },
         "関連件数": { "rollup": { "function": "count", "relation_property_name": "関連ナレッジ", "rollup_property_name": "ナレッジID" } }
+      }
+    },
+    "rename_map": {}
+  },
+  "announcements": {
+    "database_id": null,
+    "payload": {
+      "parent": { "type": "page_id", "page_id": "24dec38c1243805aaa29de1ea47e6f43" },
+      "icon": { "type": "emoji", "emoji": "📣" },
+      "title": [{ "type": "text", "text": { "content": "お知らせ" } }],
+      "description": [{ "type": "text", "text": { "content": "社内/社外向けのお知らせ（告知・更新情報）を管理するデータベース" } }],
+      "properties": {
+        "タイトル": { "title": {} },
+        "本文": { "rich_text": {} },
+        "公開ステータス": {
+          "select": {
+            "options": [
+              { "name": "下書き" },
+              { "name": "レビュー中" },
+              { "name": "公開" },
+              { "name": "アーカイブ" }
+            ]
+          }
+        },
+        "公開日": { "date": {} },
+        "公開終了日": { "date": {} },
+        "可視性": {
+          "select": {
+            "options": [
+              { "name": "社内" },
+              { "name": "社外" },
+              { "name": "限定" }
+            ]
+          }
+        },
+        "重要度": {
+          "select": {
+            "options": [
+              { "name": "低" },
+              { "name": "中" },
+              { "name": "高" },
+              { "name": "緊急" }
+            ]
+          }
+        },
+        "ピン留め": { "checkbox": {} },
+        "添付": { "files": {} },
+        "参照URL": { "url": {} },
+        "対象部署": { "relation": { "database_id": "$ref:departments", "single_property": {} } },
+        "関連プロジェクト": { "relation": { "database_id": "$ref:projects", "single_property": {} } },
+        "作成者": { "people": {} },
+        "共同編集者": { "people": {} },
+        "レビュー担当": { "people": {} },
+        "閲覧数": { "number": { "format": "number" } },
+        "読了目安(分)": {
+          "formula": {
+            "expression": "max(1, round(length(format(prop(\"本文\"))) / 500))"
+          }
+        }
       }
     },
     "rename_map": {}
