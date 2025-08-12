@@ -28,14 +28,18 @@ import shutil
 from copy import deepcopy
 
 import requests
+import logging
+from logging.handlers import RotatingFileHandler
 
 API_BASE = "https://api.notion.com/v1"
+
+LOG = logging.getLogger("apply_notion_schema")
 
 # ----------------------------
 # utils
 # ----------------------------
 def die(msg, code=1):
-    print(f"[ERROR] {msg}", file=sys.stderr)
+    LOG.error(msg)
     sys.exit(code)
 
 def load_json(path):
@@ -53,6 +57,36 @@ def headers(notion_version, token):
         "Content-Type": "application/json; charset=utf-8",
     }
 
+def setup_logging(level="INFO", log_file=None):
+    level = (level or "INFO").upper()
+    numeric = getattr(logging, level, logging.INFO)
+
+    root = logging.getLogger()
+    root.setLevel(numeric)
+
+    # Clear existing handlers (idempotent for re-runs)
+    for h in list(root.handlers):
+        root.removeHandler(h)
+
+    fmt = logging.Formatter(
+        fmt="%(asctime)s %(levelname)s %(name)s - %(message)s",
+        datefmt="%Y-%m-%dT%H:%M:%S%z",
+    )
+
+    sh = logging.StreamHandler()
+    sh.setFormatter(fmt)
+    root.addHandler(sh)
+
+    if log_file:
+        try:
+            fh = RotatingFileHandler(log_file, maxBytes=5 * 1024 * 1024, backupCount=2, encoding="utf-8")
+            fh.setFormatter(fmt)
+            root.addHandler(fh)
+        except Exception as e:
+            LOG.warning("Failed to attach log file handler: %s", e)
+
+    LOG.debug("Logger initialized: level=%s file=%s", level, log_file)
+
 def rt_to_plain(rt_array):
     if not isinstance(rt_array, list):
         return ""
@@ -67,17 +101,29 @@ def rt_to_plain(rt_array):
     return "".join(buf)
 
 def http(session, method, url, **kwargs):
+    LOG.debug("HTTP %s %s", method, url)
     for attempt in range(5):
-        r = session.request(method, url, timeout=30, **kwargs)
-        if r.status_code in (429, 502, 503):
+        try:
+            r = session.request(method, url, timeout=30, **kwargs)
+        except Exception as e:
+            LOG.warning("HTTP %s %s failed to send (attempt %d): %s", method, url, attempt + 1, e)
             time.sleep(1 + attempt)
             continue
+
+        if r.status_code in (429, 502, 503):
+            LOG.warning("HTTP %s %s -> %d; retrying (%d/5)", method, url, r.status_code, attempt + 1)
+            time.sleep(1 + attempt)
+            continue
+
         if r.status_code >= 400:
             try:
                 detail = r.json()
             except Exception:
                 detail = r.text
+            LOG.error("HTTP %s %s -> %d error: %s", method, url, r.status_code, detail)
             raise RuntimeError(f"HTTP {r.status_code}: {detail}")
+
+        LOG.debug("HTTP %s %s -> %d", method, url, r.status_code)
         return r
     raise RuntimeError("Max retries exceeded")
 
@@ -223,7 +269,7 @@ def apply_updates(session, notion_version, token, dbid, to_add, to_update, dry_r
     update_payload["properties"].update(to_add)
     update_payload["properties"].update(to_update)
     if dry_run:
-        print(f"[DRY-RUN] PATCH /databases/{dbid} -> add:{list(to_add.keys())} update:{list(to_update.keys())}")
+        LOG.info("[DRY-RUN] PATCH /databases/%s -> add:%s update:%s", dbid, list(to_add.keys()), list(to_update.keys()))
         return None
     return notion_update_database(session, notion_version, token, dbid, update_payload)
 
@@ -237,7 +283,7 @@ def apply_renames(session, notion_version, token, dbid, rename_map, current_prop
     if not payload["properties"]:
         return
     if dry_run:
-        print(f"[DRY-RUN] RENAME in /databases/{dbid} -> {rename_map}")
+        LOG.info("[DRY-RUN] RENAME in /databases/%s -> %s", dbid, rename_map)
         return
     notion_update_database(session, notion_version, token, dbid, payload)
 
@@ -365,14 +411,14 @@ def write_back_ids_to_databases_json(databases_json_path, config_obj, key_to_dbi
 
     if changed:
         save_json_atomic(databases_json_path, updated)
-        print(f"[APPLY] Wrote {changed} database_id(s) back to {databases_json_path}")
+        LOG.info("[APPLY] Wrote %d database_id(s) back to %s", changed, databases_json_path)
     else:
-        print("[SKIP] No database_id changes to persist.")
+        LOG.info("[SKIP] No database_id changes to persist.")
 
 def write_ids_mapping(path, key_to_dbid):
     payload = {"generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "ids": key_to_dbid}
     save_json_atomic(path, payload)
-    print(f"[APPLY] Wrote key->database_id mapping to {path}")
+    LOG.info("[APPLY] Wrote key->database_id mapping to %s", path)
 
 # ----------------------------
 # Resolver (create-on-missing)
@@ -400,7 +446,7 @@ def resolve_or_create_database(session, notion_version, token, db_entry, minimal
             if "object_not_found" in msg or "Could not find database" in msg:
                 if args.update_only:
                     die(f"[{key}] database_id={dbid} は削除/不可視です (--update-only)。DBを復元するか database_id を削除してください。")
-                print(f"[WARN] [{key}] database_id={dbid} は無効。タイトル+親で再解決し、必要なら作成します。", file=sys.stderr)
+                LOG.warning("[%s] database_id=%s は無効。タイトル+親で再解決し、必要なら作成します。", key, dbid)
             else:
                 raise
 
@@ -416,7 +462,7 @@ def resolve_or_create_database(session, notion_version, token, db_entry, minimal
         die(f"[{key}] 親 {parent_id} / タイトル '{title_plain}' の DB が見つかりません (--update-only)。")
 
     if args.dry_run:
-        print(f"[DRY-RUN] CREATE database '{title_plain}' under page {parent_id}")
+        LOG.info("[DRY-RUN] CREATE database '%s' under page %s", title_plain, parent_id)
         return {"id": f"DUMMY-{key}", "properties": {}, "title": minimal_payload.get("title", [])}
 
     # ensure title property at creation time
@@ -440,7 +486,12 @@ def main():
     )
     ap.add_argument("--ids-out", help="key->database_id のマッピングを別ファイルにも出力。")
     ap.add_argument("--update-only", action="store_true", help="Do not create databases; error if not found.")
+    ap.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"], help="Logging level")
+    ap.add_argument("--log-file", help="Write logs to the given file (rotating)")
     args = ap.parse_args()
+
+    setup_logging(args.log_level, args.log_file)
+    LOG.info("apply_notion_schema start dry_run=%s update_only=%s allow_removals=%s", args.dry_run, args.update_only, args.allow_removals)
 
     token = os.getenv("NOTION_TOKEN")
     if not token:
@@ -469,7 +520,7 @@ def main():
     if parent_page_id and parent_page_id != "REPLACE_WITH_PAGE_ID":
         ensure_parent_on_payloads(databases_cfg, parent_page_id)
     else:
-        print("[WARN] defaults.parent_page_id が未設定/プレースホルダです。payload.parent をそのまま使用します。", file=sys.stderr)
+        LOG.warning("defaults.parent_page_id が未設定/プレースホルダです。payload.parent をそのまま使用します。")
 
     # --- Phase 0: 生成時は Relation/Formula/Rollup を除いた最小構成で作成（後で追加） ---
     base_payloads = {}
@@ -516,7 +567,7 @@ def main():
     # --- Persist resolved IDs (if requested) ---
     if args.write_back_ids:
         if args.dry_run:
-            print("[INFO] --write-back-ids は --dry-run 中はスキップ（DUMMY ID を保存しないため）。")
+            LOG.info("--write-back-ids は --dry-run 中はスキップ（DUMMY ID を保存しないため）。")
         else:
             write_back_ids_to_databases_json(args.databases, config, key_to_dbid, databases_source_kind)
 
@@ -573,16 +624,18 @@ def main():
                 continue
             single_payload = {"properties": {pname: pschema}}
             if args.dry_run:
-                print(f"[DRY-RUN] PATCH /databases/{dbid} -> computed {pname}")
+                LOG.info("[DRY-RUN] PATCH /databases/%s -> computed %s", dbid, pname)
                 continue
             try:
                 notion_update_database(session, notion_version, token, dbid, single_payload)
                 current_schema[key] = notion_retrieve_database(session, notion_version, token, dbid)
             except Exception as e:
-                print(
-                    f"[WARN] Failed to apply computed property {key}.{pname}. "
-                    f"Expression: {pschema.get('formula', {}).get('expression')}. Error: {e}",
-                    file=sys.stderr,
+                LOG.warning(
+                    "Failed to apply computed property %s.%s. Expression: %s. Error: %s",
+                    key,
+                    pname,
+                    pschema.get('formula', {}).get('expression'),
+                    e,
                 )
                 raise
 
@@ -598,7 +651,7 @@ def main():
             removals = [name for name in cur_props.keys() if name not in target_all.keys()]
             if removals:
                 payload = {"properties": {name: None for name in removals}}
-                print(f"[APPLY] REMOVE props in {key}: {removals}")
+                LOG.info("[APPLY] REMOVE props in %s: %s", key, removals)
                 notion_update_database(session, notion_version, token, dbid, payload)
                 current_schema[key] = notion_retrieve_database(session, notion_version, token, dbid)
 
@@ -625,9 +678,9 @@ def main():
                 # Status は UI 管理。変更は送信しない。
 
     if args.dry_run:
-        print("\n[DRY-RUN] 計画の適用は行っていません。--dry-run を外して実行してください。")
+        LOG.info("[DRY-RUN] 計画の適用は行っていません。--dry-run を外して実行してください。")
 
-    print("[OK] 完了")
+    LOG.info("[OK] 完了")
     return 0
 
 if __name__ == "__main__":
