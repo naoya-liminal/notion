@@ -1,0 +1,118 @@
+erDiagram
+    COMPANY ||--o{ DEPARTMENT : "所属会社"
+    DEPARTMENT ||--o{ DEPARTMENT : "親部署"
+    ACCOUNT ||--o{ CONTACT : "所属顧客"
+    ACCOUNT ||--o{ LEAD : "案件(顧客)"
+    LEAD ||--o{ OPPORTUNITY : "関連案件"
+    ACCOUNT |o--o{ OPPORTUNITY : "商談(顧客)"
+    OPPORTUNITY |o--o{ QUOTE : "商談-見積"
+    ACCOUNT |o--o{ QUOTE : "顧客-見積"
+    ACCOUNT ||--o{ CONTRACT : "顧客-契約"
+    OPPORTUNITY |o--o{ CONTRACT : "商談-契約"
+    QUOTE |o--o{ CONTRACT : "見積-契約"
+    CONTRACT ||--o{ PROJECT : "契約-プロジェクト"
+    ACCOUNT |o--o{ PROJECT : "顧客-プロジェクト"
+    DEPARTMENT |o--o{ PROJECT : "部署-プロジェクト"
+    PROJECT ||--o{ ASSIGNMENT : "PJ-要員"
+    PROJECT ||--o{ WORKLOG : "PJ-稼働"
+    ISSUE |o--o{ WORKLOG : "課題-稼働"
+    PROJECT ||--o{ ISSUE : "PJ-課題"
+    MEETING |o--o{ ISSUE : "会議-課題"
+    PROJECT ||--o{ MEETING : "PJ-会議"
+    ACCOUNT |o--o{ MEETING : "顧客-会議"
+    PROJECT |o--o{ ASSET : "PJ-資料"
+    ACCOUNT |o--o{ ASSET : "顧客-資料"
+    PROJECT |o--o{ KNOWLEDGE : "PJ-ナレッジ"
+    ISSUE |o--o{ KNOWLEDGE : "課題-ナレッジ"
+
+    COMPANY {
+      TEXT CompanyId PK
+      TITLE CompanyName
+      TEXT CompanyCode
+    }
+    DEPARTMENT {
+      TEXT DepartmentId PK
+      TITLE DepartmentName
+      TEXT DepartmentCode
+    }
+    ACCOUNT {
+      TEXT AccountId PK
+      TITLE AccountName
+      TEXT AccountCode
+    }
+    CONTACT {
+      TEXT ContactId PK
+      TITLE ContactName
+      EMAIL ContactEmail
+      PHONE ContactPhone
+    }
+    LEAD {
+      TEXT LeadId PK
+      TITLE LeadName
+      DATE LeadOpenedDate
+      NUMBER LeadBudgetJpy
+      NUMBER LeadProbability
+    }
+    OPPORTUNITY {
+      TEXT OpportunityId PK
+      TITLE OpportunityName
+      SELECT Stage
+      NUMBER AmountJpy
+    }
+    QUOTE {
+      TEXT QuoteId PK
+      TITLE QuoteName
+      NUMBER QuoteAmountJpy
+      DATE QuoteValidUntil
+      STATUS QuoteStatus
+    }
+    CONTRACT {
+      TEXT ContractId PK
+      TITLE ContractName
+      NUMBER ContractAmountJpy
+      DATE ContractStartDate
+      DATE ContractEndDate
+      STATUS ContractStatus
+    }
+    PROJECT {
+      TEXT ProjectId PK
+      TITLE ProjectName
+      STATUS ProjectStatus
+      DATE ProjectStartDate
+    }
+    ASSIGNMENT {
+      TEXT AssignmentId PK
+      NUMBER AllocationPercent
+      SELECT Role
+      NUMBER UnitPriceJpy
+    }
+    WORKLOG {
+      TEXT WorklogId PK
+      DATE WorkDate
+      NUMBER Hours
+      STATUS ApprovalStatus
+    }
+    ISSUE {
+      TEXT IssueId PK
+      TITLE IssueTitle
+      STATUS IssueStatus
+      SELECT Priority
+      DATE DueDate
+    }
+    MEETING {
+      TEXT MeetingId PK
+      TITLE MeetingTitle
+      SELECT MeetingType
+      DATE MeetingDate
+    }
+    ASSET {
+      TEXT AssetId PK
+      TITLE AssetTitle
+      NUMBER VersionNo
+    }
+    KNOWLEDGE {
+      TEXT KnowledgeId PK
+      TITLE KnowledgeTitle
+      MULTISELECT Category
+      DATE CreatedDate
+    }

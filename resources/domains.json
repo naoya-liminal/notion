@@ -1,0 +1,330 @@
+{
+    "version": 1,
+    "domains": [
+      {
+        "name": "UUIDv4",
+        "definition": "一意識別子。API/自動生成の文字列ID。",
+        "notion_property": { "type": "rich_text" },
+        "constraints": {
+          "regex": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "nullable": false,
+          "editable": false
+        },
+        "unit": null,
+        "enum": null,
+        "examples": ["550e8400-e29b-41d4-a716-446655440000"]
+      },
+      {
+        "name": "名称(短文100)",
+        "definition": "エンティティの表示名（タイトル）。1–100文字。",
+        "notion_property": { "type": "title" },
+        "constraints": { "min_length": 1, "max_length": 100, "nullable": false },
+        "unit": null,
+        "enum": null,
+        "examples": ["レゴリス株式会社"]
+      },
+      {
+        "name": "名称(長文)",
+        "definition": "説明や備考などの自由記述（最大約4000字目安）。",
+        "notion_property": { "type": "rich_text" },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["顧客の重要メモ…"]
+      },
+      {
+        "name": "コード英数50",
+        "definition": "体系化された外部/社内コード。英数/._-のみ、1–50文字。",
+        "notion_property": { "type": "rich_text" },
+        "constraints": { "regex": "^[A-Za-z0-9._-]+$", "min_length": 1, "max_length": 50, "nullable": true, "unique_suggest": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["CUST-000123"]
+      },
+      {
+        "name": "郵便番号7桁",
+        "definition": "日本の郵便番号（7桁、ハイフン無し）。",
+        "notion_property": { "type": "rich_text" },
+        "constraints": { "regex": "^\\d{7}$", "nullable": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["1600022"]
+      },
+      {
+        "name": "住所文字列",
+        "definition": "住所の自由記述。",
+        "notion_property": { "type": "rich_text" },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["東京都新宿区…"]
+      },
+      {
+        "name": "URL",
+        "definition": "Webサイト等のURL（https 推奨）。",
+        "notion_property": { "type": "url" },
+        "constraints": { "nullable": true, "scheme_required": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["https://example.com"]
+      },
+      {
+        "name": "電話番号国内",
+        "definition": "国内電話番号（記号含む）。",
+        "notion_property": { "type": "phone_number" },
+        "constraints": { "regex": "^\\+?[\\d\\-() ]{9,20}$", "nullable": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["03-1234-5678"]
+      },
+      {
+        "name": "メールアドレス",
+        "definition": "連絡用メールアドレス。",
+        "notion_property": { "type": "email" },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["sales@example.jp"]
+      },
+      {
+        "name": "日付",
+        "definition": "ISO 8601 日付（必要に応じ時刻含む）。",
+        "notion_property": { "type": "date" },
+        "constraints": { "nullable": true, "min": "1900-01-01" },
+        "unit": null,
+        "enum": null,
+        "examples": ["2025-08-11"]
+      },
+      {
+        "name": "期間(月)",
+        "definition": "月単位の期間（整数）。",
+        "notion_property": { "type": "number", "format": "number" },
+        "constraints": { "nullable": true, "min": 0, "max": 600, "precision": 0 },
+        "unit": "month",
+        "enum": null,
+        "examples": [12]
+      },
+      {
+        "name": "金額JPY(整数)",
+        "definition": "円単位の金額（非負整数）。",
+        "notion_property": { "type": "number", "format": "yen" },
+        "constraints": { "nullable": true, "min": 0, "precision": 0 },
+        "unit": "JPY",
+        "enum": null,
+        "examples": [1500000]
+      },
+      {
+        "name": "受注確度%1桁",
+        "definition": "0–100% の割合（小数1桁）。",
+        "notion_property": { "type": "number", "format": "percent" },
+        "constraints": { "nullable": true, "min": 0.0, "max": 100.0, "precision": 1 },
+        "unit": "percent",
+        "enum": null,
+        "examples": [65.0]
+      },
+      {
+        "name": "数量整数",
+        "definition": "件数・個数等（整数）。",
+        "notion_property": { "type": "number", "format": "number" },
+        "constraints": { "nullable": true, "min": 0, "precision": 0 },
+        "unit": null,
+        "enum": null,
+        "examples": [3]
+      },
+      {
+        "name": "時間(時間数)",
+        "definition": "工数や会議時間（h、0.1刻み）。",
+        "notion_property": { "type": "number", "format": "number" },
+        "constraints": { "nullable": true, "min": 0.0, "max": 999.9, "precision": 1 },
+        "unit": "hour",
+        "enum": null,
+        "examples": [1.5]
+      },
+      {
+        "name": "ステータス一般",
+        "definition": "ワークフロー汎用状態。",
+        "notion_property": {
+          "type": "status",
+          "options": ["新規", "進行中", "保留", "完了", "却下"]
+        },
+        "constraints": { "nullable": false, "default": "新規" },
+        "unit": null,
+        "enum": ["新規", "進行中", "保留", "完了", "却下"],
+        "examples": ["新規"]
+      },
+      {
+        "name": "商談ステージ",
+        "definition": "商談の進捗段階。",
+        "notion_property": {
+          "type": "select",
+          "options": ["見込み", "提案", "交渉", "受注", "失注"]
+        },
+        "constraints": { "nullable": false, "default": "見込み" },
+        "unit": null,
+        "enum": ["見込み", "提案", "交渉", "受注", "失注"],
+        "examples": ["見込み"]
+      },
+      {
+        "name": "見積ステータス",
+        "definition": "見積の状態。",
+        "notion_property": {
+          "type": "status",
+          "options": ["作成", "承認待ち", "承認", "却下", "失効"]
+        },
+        "constraints": { "nullable": false, "default": "作成" },
+        "unit": null,
+        "enum": ["作成", "承認待ち", "承認", "却下", "失効"],
+        "examples": ["作成"]
+      },
+      {
+        "name": "契約ステータス",
+        "definition": "契約の状態。",
+        "notion_property": {
+          "type": "status",
+          "options": ["起案", "承認", "有効", "失効", "終了"]
+        },
+        "constraints": { "nullable": false, "default": "起案" },
+        "unit": null,
+        "enum": ["起案", "承認", "有効", "失効", "終了"],
+        "examples": ["起案"]
+      },
+      {
+        "name": "プロジェクトステータス",
+        "definition": "プロジェクトの状態。",
+        "notion_property": {
+          "type": "status",
+          "options": ["準備", "進行中", "停止", "完了"]
+        },
+        "constraints": { "nullable": false, "default": "準備" },
+        "unit": null,
+        "enum": ["準備", "進行中", "停止", "完了"],
+        "examples": ["準備"]
+      },
+      {
+        "name": "課題ステータス",
+        "definition": "課題の状態。",
+        "notion_property": {
+          "type": "status",
+          "options": ["未着手", "対応中", "レビュー", "完了"]
+        },
+        "constraints": { "nullable": false, "default": "未着手" },
+        "unit": null,
+        "enum": ["未着手", "対応中", "レビュー", "完了"],
+        "examples": ["未着手"]
+      },
+      {
+        "name": "優先度",
+        "definition": "重要度。",
+        "notion_property": {
+          "type": "select",
+          "options": ["低", "中", "高", "緊急"]
+        },
+        "constraints": { "nullable": false, "default": "中" },
+        "unit": null,
+        "enum": ["低", "中", "高", "緊急"],
+        "examples": ["中"]
+      },
+      {
+        "name": "案件種別",
+        "definition": "案件の分類。",
+        "notion_property": {
+          "type": "select",
+          "options": ["新規", "既存", "紹介"]
+        },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": ["新規", "既存", "紹介"],
+        "examples": ["新規"]
+      },
+      {
+        "name": "会議種別",
+        "definition": "会議の分類。",
+        "notion_property": {
+          "type": "select",
+          "options": ["定例", "臨時", "キックオフ", "レトロ"]
+        },
+        "constraints": { "nullable": false, "default": "定例" },
+        "unit": null,
+        "enum": ["定例", "臨時", "キックオフ", "レトロ"],
+        "examples": ["定例"]
+      },
+      {
+        "name": "ナレッジカテゴリ",
+        "definition": "ナレッジの分類（複数可）。",
+        "notion_property": {
+          "type": "multi_select",
+          "options": ["HowTo", "設計", "障害", "運用", "その他"]
+        },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": ["HowTo", "設計", "障害", "運用", "その他"],
+        "examples": ["HowTo", "設計"]
+      },
+      {
+        "name": "タグ",
+        "definition": "任意のラベル（複数可）。",
+        "notion_property": { "type": "multi_select", "options": [] },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": null,
+        "examples": ["SaaS", "年度末"]
+      },
+      {
+        "name": "支払条件",
+        "definition": "代金支払の取り決め。",
+        "notion_property": {
+          "type": "select",
+          "options": ["即時", "末締翌月末", "月末翌々月", "30日", "60日"]
+        },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": ["即時", "末締翌月末", "月末翌々月", "30日", "60日"],
+        "examples": ["末締翌月末"]
+      },
+      {
+        "name": "ファイル添付",
+        "definition": "ファイル格納。",
+        "notion_property": { "type": "files" },
+        "constraints": { "nullable": true },
+        "unit": null,
+        "enum": null,
+        "examples": []
+      },
+      {
+        "name": "真偽フラグ",
+        "definition": "Yes/No。",
+        "notion_property": { "type": "checkbox" },
+        "constraints": { "nullable": true, "default": false },
+        "unit": null,
+        "enum": ["true", "false"],
+        "examples": [false]
+      },
+      {
+        "name": "人(担当者)",
+        "definition": "ワークスペースメンバー参照。",
+        "notion_property": { "type": "people" },
+        "constraints": { "nullable": true, "multiple": true },
+        "unit": null,
+        "enum": null,
+        "examples": []
+      },
+      {
+        "name": "年(YYYY)",
+        "definition": "暦年（4桁）。",
+        "notion_property": { "type": "number", "format": "number" },
+        "constraints": { "nullable": true, "min": 1900, "max": 2100, "precision": 0 },
+        "unit": "year",
+        "enum": null,
+        "examples": [2025]
+      },
+      {
+        "name": "週番号(1-53)",
+        "definition": "ISO週番号。",
+        "notion_property": { "type": "number", "format": "number" },
+        "constraints": { "nullable": true, "min": 1, "max": 53, "precision": 0 },
+        "unit": "week",
+        "enum": null,
+        "examples": [32]
+      }
+    ]
+  }

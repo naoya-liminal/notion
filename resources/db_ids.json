@@ -1,0 +1,20 @@
+{
+  "generated_at": "2025-08-11T15:35:01Z",
+  "ids": {
+    "companies": "24b9bf40-ae1e-8197-8f8b-eb3a346bf93c",
+    "departments": "24b9bf40-ae1e-814a-8a71-cb6bb1087331",
+    "accounts": "24b9bf40-ae1e-81fa-9507-d47596fbf1cd",
+    "contacts": "24b9bf40-ae1e-81f3-8f87-eb5fb1fa1ec2",
+    "leads": "24b9bf40-ae1e-811c-a45e-d9af34770040",
+    "opportunities": "24b9bf40-ae1e-816f-b8fc-e8d563586ee9",
+    "quotes": "24b9bf40-ae1e-816c-87f4-e3db41b2ca6a",
+    "contracts": "24b9bf40-ae1e-8117-9924-dec3940a1f70",
+    "projects": "24b9bf40-ae1e-8160-b9ea-ebba6dbbecda",
+    "assignments": "24b9bf40-ae1e-8117-97d5-ef1246cb3009",
+    "worklogs": "24b9bf40-ae1e-81bf-a46e-c4e3c60db786",
+    "issues": "24b9bf40-ae1e-81bd-ae3d-fb794ce23355",
+    "meetings": "24b9bf40-ae1e-81e1-8d6b-eb9cf2abd35c",
+    "assets": "24b9bf40-ae1e-815d-8059-fe5664a42ce5",
+    "knowledge": "24b9bf40-ae1e-81ad-879c-dda6885231c7"
+  }
+}
