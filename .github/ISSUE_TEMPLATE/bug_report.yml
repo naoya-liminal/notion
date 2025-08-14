@@ -1,0 +1,135 @@
+name: "BUG REPORT"
+description: "試験観点／発生事象／期待結果／補足（スクリーンショット・コード・ログ）／調査・仮説検証／確定原因／改修方法を収集するフォーム。"
+title: "[BUG] <タイトル>"
+labels: ["bug"]
+body:
+  - type: textarea
+    id: test_viewpoint
+    attributes:
+      label: "▍試験観点"
+      description: "試験仕様書の観点"
+      placeholder: "例）E2E_支払フロー／境界値テスト など"
+    validations:
+      required: false
+
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: "▍発生事象"
+      description: "発生している事象(異常終了や期待値不一致など)を具体的に記載"
+      placeholder: |
+        例）
+        - 画面AでボタンBを押下すると500が返る
+        - 小数点以下が四捨五入されず切り捨てられる
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: "▍期待結果"
+      description: "期待結果を簡潔に記載"
+      placeholder: "例）小数第2位で四捨五入し整数に丸められること"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      label: " ▍補足"
+      value: " ▍補足"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "§スクリーンショット"
+      description: "この欄をクリックしてドラッグ＆ドロップ、またはクリップアイコンからファイルを添付できます。"
+      placeholder: "ここに画像/動画/ファイルをドロップ"
+    validations:
+      required: false
+
+  - type: textarea
+    id: code_ref
+    attributes:
+      label: "§コード"
+      description: "不具合が発生しているソースコードを示す(リポジトリ内のリンクを貼る)"
+      placeholder: |
+        例）
+        - 該当コミット／行番号リンク
+        - 最小再現コード（抜粋）
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "§ログ"
+      description: "開発者ツールのコンソールにて出ていたメッセージを添付"
+      placeholder: |
+        例）エラースタックトレースやネットワークリクエストの失敗ログ
+      render: shell
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "▍調査・仮説検証"
+      label: "# ▍調査・仮説検証"
+
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: "§仮説"
+      description: "事象の原因の仮説を立てて調査・検証"
+      placeholder: |
+        1. 仮説1
+        2. 仮説2
+        3. 仮説3
+    validations:
+      required: false
+
+  - type: textarea
+    id: verification_method
+    attributes:
+      label: "§検証方法"
+      placeholder: |
+        例）
+        - 再現手順の自動化（スクリプト／テスト）
+        - ログ拡張／メトリクス確認
+        - 設定／バージョン差分の洗い出し
+    validations:
+      required: false
+
+  - type: textarea
+    id: investigation_result
+    attributes:
+      label: "§調査・検証結果"
+      placeholder: "仮説ごとの検証結果と根拠を記載"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: textarea
+    id: root_cause
+    attributes:
+      label: "▍確定原因"
+      description: "調査・検証の結果、確定した原因を具体的に記載"
+      placeholder: "例）丸め処理の関数を誤用していた（floor使用）"
+    validations:
+      required: false
+
+  - type: textarea
+    id: fix_plan
+    attributes:
+      label: "▍改修方法"
+      description: "原因の解消方法を具体的に記載"
+      placeholder: |
+        例）
+        - 実装：`round()` に置換、単体テスト追加
+        - 影響範囲：計算モジュール一式
+        - ロールアウト計画／リスク
+    validations:
+      required: false
