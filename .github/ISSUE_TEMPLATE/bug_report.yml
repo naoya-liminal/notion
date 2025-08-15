@@ -122,6 +122,10 @@ body:
     attributes:
       value: "---"
 
+  - type: markdown
+    attributes:
+      value: "# ▍結論"
+
   - type: textarea
     id: root_cause
     attributes:
