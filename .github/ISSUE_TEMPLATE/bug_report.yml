@@ -6,9 +6,11 @@ body:
   - type: markdown
     attributes:
       value: "# ▍試験観点"
+      
   - type: textarea
     id: test_viewpoint
     attributes:
+      label: "▍試験観点"
       description: "試験仕様書の観点"
       placeholder: "例）E2E_支払フロー／境界値テスト など"
     validations:
