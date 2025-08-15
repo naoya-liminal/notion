@@ -6,7 +6,7 @@ body:
   - type: textarea
     id: test_viewpoint
     attributes:
-      label: "▍試験観点"
+      label: "# ▍試験観点"
       description: "試験仕様書の観点"
       placeholder: "例）E2E_支払フロー／境界値テスト など"
     validations:
@@ -15,7 +15,7 @@ body:
   - type: textarea
     id: actual_behavior
     attributes:
-      label: "▍発生事象"
+      label: "# ▍発生事象"
       description: "発生している事象(異常終了や期待値不一致など)を具体的に記載"
       placeholder: |
         例）
@@ -27,22 +27,17 @@ body:
   - type: textarea
     id: expected_result
     attributes:
-      label: "▍期待結果"
-      value: "▍期待結果"
+      label: "# ▍期待結果"
+      value: "# ▍期待結果"
       description: "期待結果を簡潔に記載"
       placeholder: "例）小数第2位で四捨五入し整数に丸められること"
     validations:
       required: true
 
-  - type: markdown
-    attributes:
-      label: " ▍補足"
-      value: " ▍補足"
-
   - type: textarea
     id: screenshots
     attributes:
-      label: "§スクリーンショット"
+      label: "---\n# §スクリーンショット"
       description: "この欄をクリックしてドラッグ＆ドロップ、またはクリップアイコンからファイルを添付できます。"
       placeholder: "ここに画像/動画/ファイルをドロップ"
     validations:
@@ -74,8 +69,8 @@ body:
 
   - type: markdown
     attributes:
-      value: "▍調査・仮説検証"
-      label: "▍調査・仮説検証"
+      value: "---\n# ▍調査・仮説検証"
+      label: "---\n# ▍調査・仮説検証"
 
   - type: textarea
     id: hypothesis
@@ -109,14 +104,10 @@ body:
     validations:
       required: false
 
-  - type: markdown
-    attributes:
-      value: "---"
-
   - type: textarea
     id: root_cause
     attributes:
-      label: "▍確定原因"
+      label: "---\n# ▍確定原因"
       description: "調査・検証の結果、確定した原因を具体的に記載"
       placeholder: "例）丸め処理の関数を誤用していた（floor使用）"
     validations:
