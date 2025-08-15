@@ -36,7 +36,6 @@ body:
   - type: markdown
     attributes:
       label: " ▍補足"
-      value: " ▍補足"
 
   - type: textarea
     id: screenshots
