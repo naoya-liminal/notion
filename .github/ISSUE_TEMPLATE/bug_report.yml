@@ -28,6 +28,7 @@ body:
     id: expected_result
     attributes:
       label: "▍期待結果"
+      value: "▍期待結果"
       description: "期待結果を簡潔に記載"
       placeholder: "例）小数第2位で四捨五入し整数に丸められること"
     validations:
