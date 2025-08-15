@@ -6,6 +6,15 @@ body:
   - type: markdown
     attributes:
       value: "# ▍概要"
+  
+  - type: textarea
+    id: notes_section
+    attributes:
+      label: "▍補足"
+      description: "区切り用（入力不要）"
+      value: "<!-- keep: notes-section -->"
+    validations:
+      required: false
       
   - type: textarea
     id: test_viewpoint
@@ -77,6 +86,10 @@ body:
       render: shell
     validations:
       required: false
+
+  - type: markdown
+    attributes:
+      value: "---"
 
   - type: markdown
     attributes:
