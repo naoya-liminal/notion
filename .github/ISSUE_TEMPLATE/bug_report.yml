@@ -15,7 +15,7 @@ body:
   - type: textarea
     id: actual_behavior
     attributes:
-      label: "# ▍発生事象"
+      label: "▍発生事象"
       description: "発生している事象(異常終了や期待値不一致など)を具体的に記載"
       placeholder: |
         例）
@@ -27,8 +27,8 @@ body:
   - type: textarea
     id: expected_result
     attributes:
-      label: "# ▍期待結果"
-      value: "# ▍期待結果"
+      label: "▍期待結果"
+      value: "▍期待結果"
       description: "期待結果を簡潔に記載"
       placeholder: "例）小数第2位で四捨五入し整数に丸められること"
     validations:
@@ -37,7 +37,8 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: "---\n# ▍補足\n## §スクリーンショット"
+      label: '''▍補足
+        §スクリーンショット'''
       description: "この欄をクリックしてドラッグ＆ドロップ、またはクリップアイコンからファイルを添付できます。"
       placeholder: "ここに画像/動画/ファイルをドロップ"
     validations:
@@ -46,7 +47,7 @@ body:
   - type: textarea
     id: code_ref
     attributes:
-      label: "## §コード"
+      label: "§コード"
       description: "不具合が発生しているソースコードを示す(リポジトリ内のリンクを貼る)"
       placeholder: |
         例）
