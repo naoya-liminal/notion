@@ -6,7 +6,7 @@ body:
   - type: textarea
     id: test_viewpoint
     attributes:
-      label: "# ▍試験観点"
+      label: "▍試験観点"
       description: "試験仕様書の観点"
       placeholder: "例）E2E_支払フロー／境界値テスト など"
     validations:
@@ -28,26 +28,15 @@ body:
     id: expected_result
     attributes:
       label: "▍期待結果"
-      value: "▍期待結果"
       description: "期待結果を簡潔に記載"
       placeholder: "例）小数第2位で四捨五入し整数に丸められること"
     validations:
       required: true
-      
-  - type: markdown
-    id: expected_result
-    attributes:
-      label: "▍期待結果"
-      value: "▍期待結果"
-      description: "期待結果を簡潔に記載"
-      placeholder: "例）小数第2位で四捨五入し整数に丸められること"
-    validations:
-      required: true
-      
+
   - type: markdown
     attributes:
       value: "▍補足"
-      
+
   - type: textarea
     id: screenshots
     attributes:
@@ -73,7 +62,7 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: "## §ログ"
+      label: "§ログ"
       description: "開発者ツールのコンソールにて出ていたメッセージを添付"
       placeholder: |
         例）エラースタックトレースやネットワークリクエストの失敗ログ
@@ -81,10 +70,14 @@ body:
     validations:
       required: false
 
+  - type: markdown
+    attributes:
+      value: "▍調査・仮説検証"
+
   - type: textarea
     id: hypothesis
     attributes:
-      label: "---\n# ▍調査・仮説検証§仮説"
+      label: "§仮説"
       description: "事象の原因の仮説を立てて調査・検証"
       placeholder: |
         1. 仮説1
@@ -96,7 +89,7 @@ body:
   - type: textarea
     id: verification_method
     attributes:
-      label: "## §検証方法"
+      label: "§検証方法"
       placeholder: |
         例）
         - 再現手順の自動化（スクリプト／テスト）
@@ -108,15 +101,19 @@ body:
   - type: textarea
     id: investigation_result
     attributes:
-      label: "## §調査・検証結果"
+      label: "§調査・検証結果"
       placeholder: "仮説ごとの検証結果と根拠を記載"
     validations:
       required: false
 
+  - type: markdown
+    attributes:
+      value: "---"
+
   - type: textarea
     id: root_cause
     attributes:
-      label: "---\n# ▍確定原因"
+      label: "▍確定原因"
       description: "調査・検証の結果、確定した原因を具体的に記載"
       placeholder: "例）丸め処理の関数を誤用していた（floor使用）"
     validations:
